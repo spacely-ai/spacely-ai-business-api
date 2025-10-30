@@ -54,10 +54,10 @@ Send a JSON object with the following structure:
 | Field            | Type       | Required | Description                                                        |
 |------------------|------------|----------|--------------------------------------------------------------------|
 | mode             | string     | Yes      | Generation mode. e.g. `sync`, `async`                              |
-| type             | string     | Yes      | Space type. e.g. `residential`                                    |
+| type             | string     | Yes      | Space type. e.g. `residential`, `commercial`, `exterior`, `event`      |
 | inputImage       | string     | Yes      | URL to the input image                                             |
-| space            | string     | Yes      | Space name (e.g. `living_room`, `bedroom`, etc.)                  |
-| style            | string     | Yes      | Desired style (e.g. `modern`, `classic`, etc.)                    |
+| space            | string     | Yes      | Space name (e.g. `living_room`, `bedroom`, etc.)  [see all presets here](#viewing-all-presets--configurations)                |
+| style            | string     | Yes      | Desired style (e.g. `modern`, `classic`, etc.)    [see all presets here](#viewing-all-presets--configurations)                |
 | spacePrompt      | string     | No       | Additional prompt for the space                                    |
 | stypePrompt      | string     | No       | Additional prompt for the style                                    |
 | options          | object     | No       | Additional options, see below                                      |
@@ -88,8 +88,8 @@ Send a JSON object with the following structure:
 
 | Field    | Type   | Example | Description                        |
 |----------|--------|---------|------------------------------------|
-| lighting | string | "daylight"  | Lighting preference (optional)     |
-| color    | string | "blue"  | Color preference (optional)        |
+| lighting | string | "daylight"  | Lighting preference (optional)  [see all presets here](#viewing-all-presets--configurations)   |
+| color    | string | "palette_1"  | Color preference (optional)   [see all presets here](#viewing-all-presets--configurations)      |
 
 #### `settings` object
 
@@ -361,8 +361,8 @@ Send a JSON object with the following structure:
 |--------------|--------|----------|-----------------------------------------------------------|
 | mode         | string | Yes      | Generation mode. e.g. `sync`, `async`                     |
 | inputImage   | string | Yes      | URL to the input image                                    |
-| space        | string | Yes      | Space name (e.g. `living_room`, `bedroom`, etc.)          |
-| style        | string | Yes      | Desired style (e.g. `modern`, `classic`, etc.)            |
+| space        | string | Yes      | Space name (e.g. `living_room`, `bedroom`, etc.)    [see all presets here](#viewing-all-presets--configurations)      |
+| style        | string | Yes      | Desired style (e.g. `modern`, `classic`, etc.)    [see all presets here](#viewing-all-presets--configurations)        |
 | spacePrompt  | string | No       | Additional prompt for the space (optional)                 |
 | stylePrompt  | string | No       | Additional prompt for the style (optional)                 |
 
