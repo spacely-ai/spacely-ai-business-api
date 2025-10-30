@@ -7,6 +7,8 @@ A unified API suite for generating creative renders, performing style transfer, 
 - [Spacely AI Style Transfer API](#spacely-ai-style-transfer-api)
 - [Spacely AI Auto Furnish API](#spacely-ai-auto-furnish-api)
 - [Asynchronous Mode](#using-async-mode)
+- [Viewing All Presets & Configurations](#viewing-all-presets--configurations)
+- [Support](#support)
 
 
 <br><br>
@@ -93,7 +95,7 @@ Send a JSON object with the following structure:
 
 | Field           | Type   | Example   | Description                          |
 |-----------------|--------|-----------|--------------------------------------|
-| creativityLevel | string | "precise" | Can be `precise`, `balanced`, etc.   |
+| creativityLevel | string | "precise" | Can be `precise`, `balanced`, `creative`, etc.   |
 
 ---
 
@@ -491,6 +493,26 @@ When processing completes, your server will receive the final result payload at 
 > **Note:** Make sure your webhook endpoint is publicly accessible and able to handle POST requests with JSON data.
 
 Continue to poll this endpoint until the `status` in the response is `"succeeded"`, then use the `outputs` array for your generated images.
+
+
+
+
+## Viewing All Presets & Configurations
+
+You can explore all available presets and configuration options supported by the Spacely AI Business API by visiting the following link:
+
+[View Business API Presets & Configs (JSON)](https://storage.googleapis.com/spacely-public-assets/presets/business-api-presets-latest.json)
+
+This JSON file includes up-to-date lists of:
+- Supported styles
+- Spaces (e.g., living_room, bedroom, etc.)
+- Preset configurations for different space types
+- Available options and their values
+
+Use this as a reference to see which styles, spaces, and presets are currently available and to help construct valid API requests.
+
+> **Tip:** You can load and parse this JSON in your application to dynamically present options or validate inputs for your users.
+
 
 
 
