@@ -451,6 +451,251 @@ curl --location 'https://business-api.spacely.ai/api/generations/auto-furnish' \
 }
 ```
 
+<br><br>
+
+# Spacely AI Empty the Room
+
+This guide explains how to use the **Spacely AI Empty the Room** API endpoint to automatically remove all furniture and decor from an input photo of a space. The API analyzes the submitted image, detects all visible furniture and decorative objects, and generates a new render showing the room as if it were completely empty. This feature is ideal for visualizing a bare space or for preparing photos for virtual staging.
+
+---
+
+## Endpoint
+
+```
+POST https://business-api.spacely.ai/api/generations/clear-room
+```
+
+---
+
+## Authentication
+
+- **API Key:** Every request must include an `X-API-KEY` header.
+- **Example:**
+  ```
+  X-API-KEY: YOUR_API_KEY
+  ```
+
+---
+
+## Request Headers
+
+| Header           | Value           | Required | Description          |
+|------------------|----------------|----------|----------------------|
+| X-API-KEY        | YOUR_API_KEY   | Yes      | Your API access key  |
+| Content-Type     | application/json| Yes     | Data content type    |
+
+---
+
+## Request Body
+
+Send a JSON object using the following structure:
+
+| Field       | Type   | Required | Description                   |
+|-------------|--------|----------|-------------------------------|
+| mode        | string | Yes      | Generation mode: `sync` or `async` |
+| inputImage  | string | Yes      | Publicly accessible URL to the input image |
+
+### Example
+
+```json
+{
+  "mode": "sync",
+  "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/3VuWYUUDHsQPx6ZILVFXqMfNofe2/fd1ac056-6e0e-4de2-84ee-0f72f087360a.png"
+}
+```
+
+---
+
+## Example cURL Request
+
+```bash
+curl --location 'https://business-api.spacely.ai/api/generations/clear-room' \
+  --header 'x-api-key: YOUR_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "mode": "sync",
+    "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/3VuWYUUDHsQPx6ZILVFXqMfNofe2/fd1ac056-6e0e-4de2-84ee-0f72f087360a.png"
+  }'
+```
+
+---
+
+## Example Response
+
+```json
+{
+    "generationId": "c9bfe84c-d41e-43cf-a44f-67af3751e0e8",
+    "status": "succeeded",
+    "input": {
+        "mode": "sync",
+        "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/8d779d71-a2af-46dc-b4c1-ee1052ac25ed.png",
+        "styleReference": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/8af083c8-e1ba-4568-91f2-b8f00eb3d103.png"
+    },
+    "outputs": [
+        "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/3fc87472-394e-46d5-a63a-5d5de61a0742.png",
+        "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/3ff983e8-fe28-4fa9-aea0-118a70a4a085.png"
+    ],
+    "message": "succeeded",
+    "percentage": 100
+}
+```
+
+---
+
+## Notes
+
+- The input image must be publicly accessible via URL.
+- Make sure your API key is kept private.
+- Usage limits and rate limiting may apply.
+- The response structure and output image URL pattern may change; check for updates in the API documentation.
+
+---
+
+## Error Responses
+
+| HTTP Status | Description                 |
+|-------------|-----------------------------|
+| 400         | Bad Request                 |
+| 401         | Unauthorized                |
+| 500         | Internal Server Error        |
+
+### Example Error Response
+
+```json
+{
+  "error": {
+    "code": "bad_request",
+    "message": [
+      "mode must be one of the following values: sync, async"
+    ]
+  }
+}
+```
+
+<br><br>
+
+# Spacely AI Magic Edit
+
+This guide explains how to use the **Spacely AI Magic Edit** API endpoint to make targeted changes to objects and content in your room photos using natural language prompts. The API analyzes the image and applies the edits described in your prompt, such as adding, removing, or modifying furniture or decor. Use this feature for flexible, on-demand creative editing.
+
+---
+
+## Endpoint
+
+```
+POST https://business-api.spacely.ai/api/generations/magic-edit
+```
+
+---
+
+## Authentication
+
+- **API Key:** Every request must include an `X-API-KEY` header.
+- **Example:**
+  ```
+  X-API-KEY: YOUR_API_KEY
+  ```
+
+---
+
+## Request Headers
+
+| Header           | Value                   | Required | Description           |
+|------------------|------------------------|----------|-----------------------|
+| X-API-KEY        | YOUR_API_KEY           | Yes      | Your API access key   |
+| Content-Type     | application/json        | Yes      | Data content type     |
+
+---
+
+## Request Body
+
+Send a JSON object using the following structure:
+
+| Field       | Type   | Required | Description                                                          |
+|-------------|--------|----------|----------------------------------------------------------------------|
+| mode        | string | Yes      | Generation mode: `sync` or `async`                                   |
+| inputImage  | string | Yes      | Publicly accessible URL to the input image                           |
+| prompt      | string | Yes      | Description of the edit you want (e.g., "add a TV", "remove the rug")|
+
+### Example
+
+```json
+{
+  "mode": "sync",
+  "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/3VuWYUUDHsQPx6ZILVFXqMfNofe2/fd1ac056-6e0e-4de2-84ee-0f72f087360a.png",
+  "prompt": "add tv"
+}
+```
+
+---
+
+## Example cURL Request
+
+```bash
+curl --location 'https://business-api.spacely.ai/api/generations/magic-edit' \
+  --header 'x-api-key: YOUR_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "mode": "sync",
+    "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/3VuWYUUDHsQPx6ZILVFXqMfNofe2/fd1ac056-6e0e-4de2-84ee-0f72f087360a.png",
+    "prompt": "add tv"
+  }'
+```
+
+---
+
+## Example Response
+
+```json
+{
+    "generationId": "f2c3a198-5678-4dbc-805c-bf2e4fd6096e",
+    "status": "succeeded",
+    "input": {
+        "mode": "sync",
+        "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/3VuWYUUDHsQPx6ZILVFXqMfNofe2/fd1ac056-6e0e-4de2-84ee-0f72f087360a.png",
+        "prompt": "add tv"
+    },
+    "outputs": [
+        "https://storage.googleapis.com/spacely-public-assets/user-assets/3VuWYUUDHsQPx6ZILVFXqMfNofe2/edited-output-1.png"
+    ],
+    "message": "succeeded",
+    "percentage": 100
+}
+```
+
+---
+
+## Notes
+
+- The input image must be publicly accessible via URL.
+- Make sure your API key is kept private.
+- Usage and rate limits may apply.
+- The response structure and output image URL pattern may change; check for updates in the API documentation.
+
+---
+
+## Error Responses
+
+| HTTP Status | Description                  |
+|-------------|------------------------------|
+| 400         | Bad Request                  |
+| 401         | Unauthorized                 |
+| 500         | Internal Server Error        |
+
+### Example Error Response
+
+```json
+{
+  "error": {
+    "code": "bad_request",
+    "message": [
+      "mode must be one of the following values: sync, async"
+    ]
+  }
+}
+```
+
+
 
 ## Using Async mode
 
