@@ -6,6 +6,8 @@ A unified API suite for generating creative renders, performing style transfer, 
 - [Spacely AI Creative Render API](#spacely-ai-creative-render-api)
 - [Spacely AI Style Transfer API](#spacely-ai-style-transfer-api)
 - [Spacely AI Auto Furnish API](#spacely-ai-auto-furnish-api)
+- [Spacely AI Empty the Room](#spacely-ai-empty-the-room)
+- [Spacely AI Magic Edit API](#spacely-ai-magic-edit)
 - [Asynchronous Mode](#using-async-mode)
 - [Viewing All Presets & Configurations](#viewing-all-presets--configurations)
 - [Support](#support)
