@@ -60,10 +60,10 @@ Send a JSON object with the following structure:
 | inputImage       | string     | Yes      | URL to the input image                                             |
 | space            | string     | Yes      | Space name (e.g. `living_room`, `bedroom`, etc.)  [see all presets here](#viewing-all-presets--configurations)                |
 | style            | string     | Yes      | Desired style (e.g. `modern`, `classic`, etc.)    [see all presets here](#viewing-all-presets--configurations)                |
+| settings         | object     | Yes      | Generation settings, see below                                     |
 | spacePrompt      | string     | No       | Additional prompt for the space                                    |
 | stypePrompt      | string     | No       | Additional prompt for the style                                    |
 | options          | object     | No       | Additional options, see below                                      |
-| settings         | object     | No       | Generation settings, see below                                     |
 
 ### Example
 
