@@ -16,9 +16,9 @@ A unified API suite for generating creative renders, performing style transfer, 
 <br><br>
 
 
-# Spacely AI Creative Render API 
+# Spacely AI Creative Render API
 
-This document describes how to use the **Spacely AI Creative Render API** for generating creative renders from input images using different styles and options. This API is intended for rendering residential spaces, such as living rooms, in various styles.
+This document describes how to use the **Spacely AI Creative Render API** for generating creative renders from input images using different styles and options. This API supports rendering various space types including residential (living rooms, bedrooms, etc.), commercial, exterior, and event spaces in multiple design styles.
 
 ---
 
@@ -32,10 +32,10 @@ POST https://business-api.spacely.ai/api/generations/creative-render
 
 ## Authentication
 
-- **API Key:** Every request must include an `X-API-KEY` header.
+- **API Key:** Every request must include an `x-api-key` header.
 - **Example:**
   ```
-  X-API-KEY: YOUR_API_KEY
+  x-api-key: YOUR_API_KEY
   ```
 
 ---
@@ -44,7 +44,7 @@ POST https://business-api.spacely.ai/api/generations/creative-render
 
 | Header           | Value                   | Required | Description            |
 |------------------|------------------------|----------|------------------------|
-| X-API-KEY        | YOUR_API_KEY           | Yes      | Your API access key    |
+| x-api-key        | YOUR_API_KEY           | Yes      | Your API access key    |
 | Content-Type     | application/json        | Yes      | Data content type      |
 
 ---
@@ -58,21 +58,23 @@ Send a JSON object with the following structure:
 | mode             | string     | Yes      | Generation mode. e.g. `sync`, `async`                              |
 | type             | string     | Yes      | Space type. e.g. `residential`, `commercial`, `exterior`, `event`      |
 | inputImage       | string     | Yes      | URL to the input image                                             |
-| space            | string     | Yes      | Space name (e.g. `living_room`, `bedroom`, etc.)  [see all presets here](#viewing-all-presets--configurations)                |
+| space            | string     | Yes      | Space name (e.g. `living_room`, `bedroom`, `exterior_home`, etc.)  [see all presets here](#viewing-all-presets--configurations)                |
 | style            | string     | Yes      | Desired style (e.g. `modern`, `classic`, etc.)    [see all presets here](#viewing-all-presets--configurations)                |
 | spacePrompt      | string     | No       | Additional prompt for the space                                    |
 | stypePrompt      | string     | No       | Additional prompt for the style                                    |
 | options          | object     | No       | Additional options, see below                                      |
 | settings         | object     | No       | Generation settings, see below                                     |
+| variations       | number     | No       | Number of variations to generate (default varies by endpoint)      |
+| speedMode        | string     | No       | Processing speed mode. e.g. `fast`, `standard` (optional)          |
 
 ### Example
 
 ```json
 {
-  "mode": "sync",
-  "type": "residential",
-  "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/3VuWYUUDHsQPx6ZILVFXqMfNofe2/6ecec56c-7373-4ba1-8b2e-04c162d4bd96.png",
-  "space": "living_room",
+  "mode": "async",
+  "type": "exterior",
+  "inputImage": "https://storage.googleapis.com/spacely-public-assets/examples/bedroom.jpg",
+  "space": "exterior_home",
   "style": "modern",
   "spacePrompt": "",
   "stypePrompt": "",
@@ -82,7 +84,9 @@ Send a JSON object with the following structure:
   },
   "settings": {
     "creativityLevel": "precise"
-  }
+  },
+  "variations": 3,
+  "speedMode": "fast"
 }
 ```
 
@@ -106,13 +110,13 @@ Send a JSON object with the following structure:
 
 ```bash
 curl --location 'https://business-api.spacely.ai/api/generations/creative-render' \
-  --header 'X-API-KEY: YOUR_API_KEY' \
+  --header 'x-api-key: YOUR_API_KEY' \
   --header 'Content-Type: application/json' \
   --data '{
-    "mode": "sync",
-    "type": "residential",
-    "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/3VuWYUUDHsQPx6ZILVFXqMfNofe2/6ecec56c-7373-4ba1-8b2e-04c162d4bd96.png",
-    "space": "living_room",
+    "mode": "async",
+    "type": "exterior",
+    "inputImage": "https://storage.googleapis.com/spacely-public-assets/examples/bedroom.jpg",
+    "space": "exterior_home",
     "style": "modern",
     "spacePrompt": "",
     "stypePrompt": "",
@@ -122,7 +126,9 @@ curl --location 'https://business-api.spacely.ai/api/generations/creative-render
     },
     "settings": {
       "creativityLevel": "precise"
-    }
+    },
+    "variations": 3,
+    "speedMode": "fast"
   }'
 ```
 
@@ -135,9 +141,9 @@ curl --location 'https://business-api.spacely.ai/api/generations/creative-render
   "generationId": "ccc54abf-be94-42c8-a49f-8aefcfebfe94",
   "status": "succeeded",
   "input": {
-    "mode": "sync",
-    "type": "residential",
-    "space": "living_room",
+    "mode": "async",
+    "type": "exterior",
+    "space": "exterior_home",
     "style": "modern",
     "options": {
       "color": "",
@@ -146,15 +152,16 @@ curl --location 'https://business-api.spacely.ai/api/generations/creative-render
     "settings": {
       "creativityLevel": "precise"
     },
-    "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/e271a958-707f-447f-9647-85ca13fba674.png",
+    "inputImage": "https://storage.googleapis.com/spacely-public-assets/examples/bedroom.jpg",
     "spacePrompt": "",
-    "stypePrompt": ""
+    "stypePrompt": "",
+    "variations": 3,
+    "speedMode": "fast"
   },
   "outputs": [
     "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/c871c05a-0a41-4e94-be1a-402a213065bd.png",
     "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/af194981-23ed-4ed0-85fc-0899ae9ec47c.png",
-    "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/10ebf55f-aa25-4e06-97dc-62599c3d2d4e.png",
-    "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/3d8e943a-eae2-4d35-9a6a-591e8ec02aab.png"
+    "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/10ebf55f-aa25-4e06-97dc-62599c3d2d4e.png"
   ],
   "message": "succeeded",
   "percentage": 100
@@ -212,10 +219,10 @@ POST https://business-api.spacely.ai/api/generations/style-transfer
 
 ## Authentication
 
-- **API Key:** Every request must include an `X-API-KEY` header.
+- **API Key:** Every request must include an `x-api-key` header.
 - **Example:**
   ```
-  X-API-KEY: YOUR_API_KEY
+  x-api-key: YOUR_API_KEY
   ```
 
 ---
@@ -224,7 +231,7 @@ POST https://business-api.spacely.ai/api/generations/style-transfer
 
 | Header           | Value                   | Required | Description            |
 |------------------|------------------------|----------|------------------------|
-| X-API-KEY        | YOUR_API_KEY           | Yes      | Your API access key    |
+| x-api-key        | YOUR_API_KEY           | Yes      | Your API access key    |
 | Content-Type     | application/json        | Yes      | Data content type      |
 
 ---
@@ -238,6 +245,7 @@ Send a JSON object with the following structure:
 | mode             | string     | Yes      | Generation mode. e.g. `sync`, `async`                              |
 | inputImage       | string     | Yes      | URL to the input image                                             |
 | styleReference   | string     | Yes      | URL to the style reference image                                   |
+| speedMode        | string     | No       | Processing speed mode. e.g. `fast`, `standard` (optional)          |
 
 > **Note:** When using `styleReference`, you do not need to provide the fields `type`, `space`, `style`, `spacePrompt`, or `stypePrompt`.
 
@@ -247,7 +255,8 @@ Send a JSON object with the following structure:
 {
   "mode": "async",
   "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/3VuWYUUDHsQPx6ZILVFXqMfNofe2/6ecec56c-7373-4ba1-8b2e-04c162d4bd96.png",
-  "styleReference": "https://storage.googleapis.com/spacely/style-presets/scandinavian.png"
+  "styleReference": "https://storage.googleapis.com/spacely/style-presets/scandinavian.png",
+  "speedMode": "fast"
 }
 ```
 
@@ -257,12 +266,13 @@ Send a JSON object with the following structure:
 
 ```bash
 curl --location 'https://business-api.spacely.ai/api/generations/style-transfer' \
-  --header 'X-API-KEY: YOUR_API_KEY' \
+  --header 'x-api-key: YOUR_API_KEY' \
   --header 'Content-Type: application/json' \
   --data '{
     "mode": "async",
     "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/3VuWYUUDHsQPx6ZILVFXqMfNofe2/6ecec56c-7373-4ba1-8b2e-04c162d4bd96.png",
-    "styleReference": "https://storage.googleapis.com/spacely/style-presets/scandinavian.png"
+    "styleReference": "https://storage.googleapis.com/spacely/style-presets/scandinavian.png",
+    "speedMode": "fast"
   }'
 ```
 
@@ -275,9 +285,10 @@ curl --location 'https://business-api.spacely.ai/api/generations/style-transfer'
     "generationId": "c9bfe84c-d41e-43cf-a44f-67af3751e0e8",
     "status": "succeeded",
     "input": {
-        "mode": "sync",
+        "mode": "async",
         "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/8d779d71-a2af-46dc-b4c1-ee1052ac25ed.png",
-        "styleReference": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/8af083c8-e1ba-4568-91f2-b8f00eb3d103.png"
+        "styleReference": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/8af083c8-e1ba-4568-91f2-b8f00eb3d103.png",
+        "speedMode": "fast"
     },
     "outputs": [
         "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/3fc87472-394e-46d5-a63a-5d5de61a0742.png",
@@ -338,10 +349,10 @@ POST https://business-api.spacely.ai/api/generations/auto-furnish
 
 ## Authentication
 
-- **API Key:** Every request must include an `X-API-KEY` header.
+- **API Key:** Every request must include an `x-api-key` header.
 - **Example:**
   ```
-  X-API-KEY: YOUR_API_KEY
+  x-api-key: YOUR_API_KEY
   ```
 
 ---
@@ -350,7 +361,7 @@ POST https://business-api.spacely.ai/api/generations/auto-furnish
 
 | Header           | Value                   | Required | Description            |
 |------------------|------------------------|----------|------------------------|
-| X-API-KEY        | YOUR_API_KEY           | Yes      | Your API access key    |
+| x-api-key        | YOUR_API_KEY           | Yes      | Your API access key    |
 | Content-Type     | application/json        | Yes      | Data content type      |
 
 ---
