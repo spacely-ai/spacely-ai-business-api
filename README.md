@@ -86,7 +86,7 @@ Send a JSON object with the following structure:
     "creativityLevel": "precise"
   },
   "variations": 3,
-  "speedMode": "fast"
+  "speedMode": "standard"
 }
 ```
 
@@ -128,7 +128,7 @@ curl --location 'https://business-api.spacely.ai/api/generations/creative-render
       "creativityLevel": "precise"
     },
     "variations": 3,
-    "speedMode": "fast"
+    "speedMode": "standard"
   }'
 ```
 
@@ -156,7 +156,7 @@ curl --location 'https://business-api.spacely.ai/api/generations/creative-render
     "spacePrompt": "",
     "stypePrompt": "",
     "variations": 3,
-    "speedMode": "fast"
+    "speedMode": "standard"
   },
   "outputs": [
     "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/c871c05a-0a41-4e94-be1a-402a213065bd.png",
@@ -256,7 +256,7 @@ Send a JSON object with the following structure:
   "mode": "async",
   "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/3VuWYUUDHsQPx6ZILVFXqMfNofe2/6ecec56c-7373-4ba1-8b2e-04c162d4bd96.png",
   "styleReference": "https://storage.googleapis.com/spacely/style-presets/scandinavian.png",
-  "speedMode": "fast"
+  "speedMode": "standard"
 }
 ```
 
@@ -272,7 +272,7 @@ curl --location 'https://business-api.spacely.ai/api/generations/style-transfer'
     "mode": "async",
     "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/3VuWYUUDHsQPx6ZILVFXqMfNofe2/6ecec56c-7373-4ba1-8b2e-04c162d4bd96.png",
     "styleReference": "https://storage.googleapis.com/spacely/style-presets/scandinavian.png",
-    "speedMode": "fast"
+    "speedMode": "standard"
   }'
 ```
 
@@ -288,7 +288,7 @@ curl --location 'https://business-api.spacely.ai/api/generations/style-transfer'
         "mode": "async",
         "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/8d779d71-a2af-46dc-b4c1-ee1052ac25ed.png",
         "styleReference": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/8af083c8-e1ba-4568-91f2-b8f00eb3d103.png",
-        "speedMode": "fast"
+        "speedMode": "standard"
     },
     "outputs": [
         "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/3fc87472-394e-46d5-a63a-5d5de61a0742.png",
