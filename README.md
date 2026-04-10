@@ -428,12 +428,12 @@ curl --location 'https://business-api.spacely.ai/api/generations/auto-furnish' \
     "input": {
         "mode": "sync",
         "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/8d779d71-a2af-46dc-b4c1-ee1052ac25ed.png",
-        "styleReference": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/8af083c8-e1ba-4568-91f2-b8f00eb3d103.png",
         "variations": 3,
         "speedMode": "standard"
     },
     "outputs": [
         "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/3fc87472-394e-46d5-a63a-5d5de61a0742.png",
+        "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/3ff983e8-fe28-4fa9-aea0-118a70a4a085.png",
         "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/3ff983e8-fe28-4fa9-aea0-118a70a4a085.png"
     ],
     "message": "succeeded",
