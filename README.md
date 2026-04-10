@@ -379,6 +379,8 @@ Send a JSON object with the following structure:
 | style        | string | Yes      | Desired style (e.g. `modern`, `classic`, etc.)    [see all presets here](#viewing-all-presets--configurations)        |
 | spacePrompt  | string | No       | Additional prompt for the space (optional)                 |
 | stylePrompt  | string | No       | Additional prompt for the style (optional)                 |
+| variations   | number | No       | Number of variations to generate (default varies by endpoint) |
+| speedMode    | string | No       | Processing speed mode. e.g. `fast`, `standard` (optional) |
 
 ### Example
 
@@ -389,7 +391,9 @@ Send a JSON object with the following structure:
   "space": "living_room",
   "style": "modern",
   "spacePrompt": "",
-  "stylePrompt": ""
+  "stylePrompt": "",
+  "variations": 3,
+  "speedMode": "standard"
 }
 ```
 
@@ -407,7 +411,9 @@ curl --location 'https://business-api.spacely.ai/api/generations/auto-furnish' \
     "space": "living_room",
     "style": "modern",
     "spacePrompt": "",
-    "stylePrompt": ""
+    "stylePrompt": "",
+    "variations": 3,
+    "speedMode": "standard"
   }'
 ```
 
@@ -422,7 +428,9 @@ curl --location 'https://business-api.spacely.ai/api/generations/auto-furnish' \
     "input": {
         "mode": "sync",
         "inputImage": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/8d779d71-a2af-46dc-b4c1-ee1052ac25ed.png",
-        "styleReference": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/8af083c8-e1ba-4568-91f2-b8f00eb3d103.png"
+        "styleReference": "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/8af083c8-e1ba-4568-91f2-b8f00eb3d103.png",
+        "variations": 3,
+        "speedMode": "standard"
     },
     "outputs": [
         "https://storage.googleapis.com/spacely-public-assets/user-assets/D76DYaqsaFT4YvUrbSZxuJWa6Y13/3fc87472-394e-46d5-a63a-5d5de61a0742.png",
